@@ -11,13 +11,9 @@ public class Trader {
     private String code;
     private String name;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    private Order order;
-
-    public Trader(String code, String name, Order order) {
+    public Trader(String code, String name) {
         this.code = code;
         this.name = name;
-        this.order = order;
     }
 
     public Trader() {
@@ -40,11 +36,4 @@ public class Trader {
         this.name = name;
     }
 
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
 }

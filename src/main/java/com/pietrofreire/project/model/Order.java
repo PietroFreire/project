@@ -9,18 +9,15 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int ticker;
+    private String ticker;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     private Trader trader;
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    private Trade trade;
 
-    public Order(long id, int ticker, Trader trader, Trade trade) {
+    public Order(long id, String ticker, Trader trader) {
         this.id = id;
         this.ticker = ticker;
         this.trader = trader;
-        this.trade = trade;
     }
 
     public Order() {
@@ -35,11 +32,11 @@ public class Order {
         this.id = id;
     }
 
-    public int getTicker() {
+    public String getTicker() {
         return ticker;
     }
 
-    public void setTicker(int ticker) {
+    public void setTicker(String ticker) {
         this.ticker = ticker;
     }
 
@@ -49,14 +46,6 @@ public class Order {
 
     public void setTrader(Trader trader) {
         this.trader = trader;
-    }
-
-    public Trade getTrade() {
-        return trade;
-    }
-
-    public void setTrade(Trade trade) {
-        this.trade = trade;
     }
 
 }

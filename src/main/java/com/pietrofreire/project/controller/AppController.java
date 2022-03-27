@@ -18,7 +18,7 @@ public class AppController {
         return service.getCSV();
     }
 
-    @RequestMapping(path = "/financialByTrader ", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(path = "/financialByTrader", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public String getJSON() {
 
         return service.getJSON();

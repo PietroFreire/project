@@ -1,10 +1,7 @@
 package com.pietrofreire.project.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.Date;
+import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Entity
 public class Trade {
@@ -12,25 +9,38 @@ public class Trade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date timeStamp;
+    private Timestamp timeStamp;
     private int quantity;
     private double price;
 
-    public Trade(Date timeStamp, int quantity, double price) {
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    private Order order;
+
+    public Trade(Long id, Timestamp timeStamp, int quantity, double price, Order order) {
+        this.id = id;
         this.timeStamp = timeStamp;
         this.quantity = quantity;
         this.price = price;
+        this.order = order;
     }
 
     public Trade() {
 
     }
 
-    public Date getTimeStamp() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Timestamp  getTimeStamp() {
         return timeStamp;
     }
 
-    public void setTimeStamp(Date timeStamp) {
+    public void setTimeStamp(Timestamp  timeStamp) {
         this.timeStamp = timeStamp;
     }
 
@@ -49,4 +59,17 @@ public class Trade {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public double total(){
+        return this.price * this.quantity;
+    }
+
 }

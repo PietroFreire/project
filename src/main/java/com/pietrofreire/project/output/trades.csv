@@ -1,2 +1,3 @@
 "TraderCode","TraderName","OrderID","Ticker","Qty","AVGPrice"
-"JDO","John Doe","123456","PETR4","1000","25.123456"
+"JDO","John Doe","1","PETR4","1000","25.123455999999997"
+"JSM","John Smith","2","ITUB4","2000","40.0"
